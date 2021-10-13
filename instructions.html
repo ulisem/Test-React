@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="task-description__TaskContentWrapper-sc-380ibo-1 gHbVUV task-description-content">
+      <p>Your task is to implement a React component that renders a text input field with auto-completion.</p>
+      <img alt="example input box with autocompleted drop down list"
+           src="demo.gif">
+      <h3>Requirements</h3>
+      <ol>
+        <li>In order to fetch items based on the current query, you should send a GET request to the mocked
+          <code>https://611d53597d273a0017e2f7a0.mockapi.io/cities</code> endpoint. The endpoint accepts a query
+          parameter <code>name</code>
+          that
+          is meant to hold the query's value.</li>
+        <li>The component should render a <code>div</code> element that has the class name <code>wrapper</code>
+          and two child elements: a <code>div</code> element with the class name <code>control</code> and a
+          <code>div</code>
+          element
+          with the class name <code>list</code>. The <code>div</code> element with class name <code>control</code>
+          should
+          contain an input
+          element with the class name <code>input</code>, and this is the input in which the user enters a query.</li>
+        <li>Once a response comes from the API, all strings from the response should be displayed inside
+          the <code>div</code> tag with class name <code>list</code>, each one inside a separate <code>a</code> element
+          with
+          the
+          class name <code>list-item</code>. The strings should be displayed in the same order as they arrived in
+          from the API.</li>
+        <li>You should avoid sending too many requests to the API; in particular, do not send requests on
+          every single keypress! You are expected to properly <strong>debounce</strong> the requests. The debounce
+          time-out should be <strong>500</strong> milliseconds.</li>
+        <li>When items are being fetched, a class name <code>is-loading</code> should be added to the input's wrapper
+          (the element with class name <code>control</code>).</li>
+        <li>When items are being fetched, no request has been sent or the endpoint has returned zero items,
+          the <code>div</code> element with class name <code>list</code> should not be rendered.</li>
+        <li>The component accepts the prop <code>onSelectItem: (item: string) =&gt; void</code>, which should be called
+          with an item when the user clicks on it. Clicking on an item does not have any effect apart from
+          calling the callback.</li>
+        <li>The component should be the default export and can be either a function or a class.</li>
+      </ol>
+      <h3>Assumptions</h3>
+      <ul>
+        <li><code>https://611d53597d273a0017e2f7a0.mockapi.io</code> is a mocked service.</li>
+        <li>The mocked endpoint <code>https://611d53597d273a0017e2f7a0.mockapi.io/cities</code> returns an array of
+          objects with <b>id</b> and <b>name</b>. The array's
+          length
+          is at most <strong>100</strong>.</li>
+        <li>Assume that a request sent to the mocked endpoint
+          <code>https://611d53597d273a0017e2f7a0.mockapi.io/cities</code> never fails.
+        </li>
+
+        <li>Design/styling is not assessed and will not affect your score. You should focus only on
+          implementing the requirements.</li>
+        <li>The following imports are allowed:
+          <ul>
+            <li><code>react</code> (v16.9.0),</li>
+            <li><code>classnames</code> (v2.2.6),</li>
+            <li><code>lodash</code> (v4.17.14),</li>
+            <li><code>axios</code> (v0.19.2).</li>
+          </ul>
+        </li>
+        <li>Use <code>console.log</code> and <code>console.error</code> for debugging purposes via your browser's
+          developer
+          tools.</li>
+        <li><strong>When using Axios you are expected to use <code>params</code> argument and not build the URL by hand
+            (<a href="https://github.com/axios/axios#request-config">documentation</a>)</strong></li>
+      </ul>
+      <h3>Additional examples</h3>
+      <h4>Example 1</h4>
+      <p>Let's consider the following sequence of actions:</p>
+      <ul>
+        <li>The user types "q" into the input;</li>
+        <li>After 50 ms the user presses "u", and then again, after every 50 ms, a new character is inserted until
+          the input value is "query";</li>
+        <li>Only one request to the API is sent, exactly 500 ms after "y" is inputted;</li>
+        <li>During this period (from pressing "y" until the response comes in), the class name <code>is-loading</code>
+          is added to the input's wrapper.</li>
+      </ul>
+      <h4>Example 2</h4>
+      <p>If the response from the API endpoint is:</p>
+      <pre><code class="language-json">
+        [
+          {
+            name: 'North Aaliyahbury',
+            id: '2',
+          },
+          {
+            name: 'North Highlands',
+            id: '17',
+          },
+          {
+            name: 'North Lelahbury',
+            id: '28',
+          },
+          {
+            name: 'North Cassandra',
+            id: '95',
+          },
+          {
+            name: 'North Larue',
+            id: '99',
+          },
+        ];
+
+    </code></pre>
+      <p>then the list section, which is rendered as follows:</p>
+      <pre>
+        <code class="language-html">
+          &lt;div class="list"&gt;
+            &lt;a class="list-item"&gt;North Aaliyahbury&lt;/a&gt;
+            &lt;a class="list-item"&gt;North Highlands&lt;/a&gt;
+            &lt;a class="list-item"&gt;North Lelahbury&lt;/a&gt;
+            &lt;a class="list-item"&gt;North Cassandra&lt;/a&gt;
+            &lt;a class="list-item"&gt;North Larue&lt;/a&gt;
+          &lt;/div&gt;
+        </code>
+      </pre>
+    </div>
+  </body>
+
+</html>
